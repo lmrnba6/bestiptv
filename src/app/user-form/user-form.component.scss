@@ -1,0 +1,17 @@
+@import '../../styles';
+.save {
+  background: $green;
+  color: $white;
+  width: 10%;
+}
+
+.cancel {
+  background: $red;
+  color: $white;
+  margin-right: 2px;
+  width: 10%;
+}
+
+.mat-form-field {
+  width: 50%;
+}

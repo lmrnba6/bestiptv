@@ -1,0 +1,74 @@
+@import '../../styles';
+
+.abstract-table-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  .mat-table {
+    overflow: auto;
+    max-height: 500px;
+    font-family: monospace;
+    a {
+      outline: 0;
+      text-decoration-line: none;
+    }
+    .mat-row {
+      min-height: 0px;
+    }
+    .mat-form-field {
+      font-size: 14px;
+      width: 100%;
+    }
+    .mat-header-row {
+      background-color: $red;
+      min-height: 40px;
+    }
+
+    .mat-cell {
+      padding-right: 4px;
+    }
+
+    .mat-header-cell {
+      color: #ffff;
+      font-weight: bold;
+    }
+
+    .mat-row:nth-child(odd) {
+      background-color: #cccccc5e;
+    }
+  }
+}
+
+::ng-deep .mat-paginator {
+  height: 40px !important; 
+}
+::ng-deep .mat-paginator-container{
+  min-height: 0px !important;
+}
+::ng-deep .mat-paginator-page-size-select {
+  margin: -14px 4px 0 4px !important;
+}
+::ng-deep .mat-paginator-range-actions {
+  min-height: 0px !important;
+}
+
+::ng-deep snack-bar-container.success{
+  background-color: $green;
+  color: $white;
+}
+
+::ng-deep snack-bar-container.error{
+  background-color: $red;
+  color: $white;
+}
+
+.abstract-table-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+  background-color: #cccccc5e;
+}
+
+.mat-icon {
+  display: inline;
+}
+

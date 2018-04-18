@@ -1,0 +1,33 @@
+<ng-template *ngIf="dialog==='confirm'">
+  <mat-icon class="pull-left" style="font-weight: bold;font-size:30px; margin-right:5%; -webkit-text-fill-color:#f93e3e">{{ icon }}</mat-icon>
+  <p>{{ title }}</p>
+  <mat-divider style="margin-bottom:5%;"></mat-divider>
+  <p style="margin-bottom:10%;">{{ message }}</p>
+
+  <mat-nav-list *ngIf="!isConfirm">
+    <mat-nav-list>
+      <mat-icon class="pull-left">remove</mat-icon>
+      <input class="pull-left" value="$Bottin des requérants$" mat-list-item #tag1>
+    </mat-nav-list>
+    <mat-icon (click)="copySuccess('$Bottin des requérants$')" matTooltip="Copie" [ngxClipboard]="tag1" class="icon pull-right">content_copy</mat-icon>
+    <br>
+    <mat-nav-list>
+      <mat-icon class="pull-left">remove</mat-icon>
+      <input class="pull-left" value="$Bottin$" mat-list-item #tag2>
+    </mat-nav-list>
+    <mat-icon (click)="copySuccess('$Bottin$')" matTooltip="Copie" [ngxClipboard]="tag2" class="icon pull-right">content_copy</mat-icon>
+    <br>
+    <mat-nav-list>
+      <mat-icon class="pull-left">remove</mat-icon>
+      <input class="pull-left" value="$Bottin des requérants hjkhjhjk$" mat-list-item #tag3>
+    </mat-nav-list>
+    <mat-icon (click)="copySuccess('$Bottin des requérants hjkhjhjk$')" matTooltip="Copie" [ngxClipboard]="tag3" class="icon pull-right">content_copy</mat-icon>
+    <br>
+  </mat-nav-list>
+
+  <button *ngIf="isConfirm" type="button" mat-raised-button (click)="dialogRef.close(true)">Oui</button>
+  <button *ngIf="isConfirm" type="button" mat-button (click)="dialogRef.close(false)">Annuler</button>
+</ng-template>
+<!-- <ng-template *ngIf="dialog==='how'"> -->
+  <app-how-it-works-dialog></app-how-it-works-dialog>
+<!-- </ng-template> -->

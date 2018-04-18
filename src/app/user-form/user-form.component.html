@@ -1,0 +1,36 @@
+<h2>Gestion des utilisateurs - {{user.username}} -</h2>
+<mat-divider></mat-divider>
+<mat-card>
+  <app-loader *ngIf="block" [color]="color" [mode]="mode" [value]="value" [diameter]="48">
+  </app-loader>
+  <form #userForm="ngForm" (ngSubmit)="onSave()">
+      <div class="container">
+      <button class="pull-right save" type="submit" mat-button>
+        <mat-icon>save</mat-icon>
+      </button>
+      <button class="pull-right cancel" type="button" (click)="onCancel()" mat-button>
+        <mat-icon>cancel</mat-icon>
+      </button>
+      <mat-form-field>
+        <input [(ngModel)]="user.username" name="username" matInput placeholder="Psudo" autofocus required>
+        <mat-error *ngIf="username.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <textarea [(ngModel)]="user.firstname" name="firstname" matInput placeholder="Prénom" required></textarea>
+        <mat-error *ngIf="firstname.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input [(ngModel)]="user.lastname" name="lastname" matInput placeholder="Nom" required>
+        <mat-error *ngIf="lastname.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input [(ngModel)]="user.courriel" name="courriel" matInput placeholder="Courriel" required>
+        <mat-error *ngIf="courriel.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <br>
+    </div>
+  </form>
+</mat-card>

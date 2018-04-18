@@ -1,0 +1,59 @@
+@import '../../../styles'; 
+.header {
+  background: #252525;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  .icon {
+    color: #ffff;
+  }
+  .title {
+    color: #ffff;
+    padding-left: 20px;
+    padding-right: 10%;
+    font-size: 40px;
+    font-style: italic;
+    cursor: pointer;
+  }
+  img {
+    height: 130%;
+    margin-top: 1%;
+    width: 20%;
+  }
+
+  .mat-toolbar-row, .mat-toolbar-single-row {
+    height: 80px;
+}
+
+  .logout {
+    background: $red;
+    color:$white;
+    margin-left: 1%;
+  }
+
+  .login {
+    background: $green;
+    color:$white;
+    margin-left: 1%;
+  }
+
+  .mat-toolbar-row,
+  .mat-toolbar-single-row {
+    padding: 0;
+    box-shadow: 5px 10px #f93e3e;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  .menu {
+    color: #ffff;
+    font-size: 20px;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+
+  
+}

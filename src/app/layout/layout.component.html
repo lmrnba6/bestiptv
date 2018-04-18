@@ -1,0 +1,64 @@
+<div class="layout-wrapper">
+  <app-topbar [isConnected]="isConnected" (menu)="toggleMenu()" (login)="login($event)"></app-topbar>
+  <mat-sidenav-container  class="example-container">
+    <mat-sidenav #sidenav mode="side" [opened]="isConnected && isSideNavOpened" class="example-sidenav" [fixedInViewport]="options.fixed" [fixedTopGap]="options.top"
+      [fixedBottomGap]="options.bottom">
+      <mat-nav-list>
+        <mat-nav-list>
+          <button mat-button mat-list-item></button>
+          <a routerLink="/creer-nouvelle-demande" class="btn btn-lg btn-add"><mat-icon class="icon">note_add</mat-icon> Créer une demande
+          </a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/liste-des-demandes" routerLinkActive="active">
+            <mat-icon class="icon">list</mat-icon>Liste des demandes
+          </a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-list-item href="#">
+            <mat-icon class="icon">email</mat-icon>Traiter les messages entrants
+          </a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-list-item href="#">
+            <mat-icon class="icon">input</mat-icon>Suivre les sous-demandes
+          </a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-list-item href="#">
+            <mat-icon class="icon">done_all</mat-icon>Valider les demandes
+          </a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-list-item href="#">
+            <mat-icon class="icon">border_color</mat-icon>Réviser les demandes
+          </a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-list-item href="#">
+            <mat-icon class="icon">poll</mat-icon> Statistiques
+          </a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-list-item routerLink="/administration" routerLinkActive="active">
+            <mat-icon class="icon">business</mat-icon>Administration
+          </a>
+        </mat-nav-list>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <!-- <button mat-icon-button class="btnMenu" (click)="sidenav.toggle(); openCloseNavSide()">
+        <mat-icon class="menuIcon" *ngIf="!isSideNavOpened">format_indent_increase</mat-icon>
+        <mat-icon class="menuIcon" *ngIf="isSideNavOpened">format_indent_decrease</mat-icon>
+      </button>
+      <button mat-icon-button (click)="goBack()">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+      <button mat-icon-button (click)="goForward()">
+        <mat-icon>chevron_right</mat-icon>
+      </button> -->
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <app-footer></app-footer>
+</div>

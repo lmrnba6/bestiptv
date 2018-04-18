@@ -1,0 +1,86 @@
+<div *ngIf="setting.filter" class="abstract-table-header">
+  <mat-form-field>
+    <input class="pull-left" matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtre">
+  </mat-form-field>
+  <a *ngIf="setting.addRow" class="pull-right" [routerLink]="" (click)="onAddRow()">
+    <mat-icon style="font-weight: bold;font-size:40px;-webkit-text-fill-color:black">library_add</mat-icon>
+  </a>
+  <a *ngIf="setting.refresh" class="pull-right" [routerLink]="" (click)="onRefresh()">
+    <mat-icon style="font-weight: bold;font-size:40px;-webkit-text-fill-color:black">refresh</mat-icon>
+  </a>
+</div>
+
+<div class="abstract-table-container mat-elevation-z8">
+  <app-loader *ngIf="block" [color]="color" [mode]="mode" [value]="value" [diameter]="48">
+  </app-loader>
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container *ngFor="let column of setting.cols" [matColumnDef]="column.columnDef">
+      <ng-container *ngIf="column.columnDef==='settings'">
+        <mat-header-cell *matHeaderCellDef mat-sort-header disabled>
+          <mat-icon style="font-weight: bold;font-size:25px; -webkit-text-fill-color: yellow">flash_on</mat-icon>
+        </mat-header-cell>
+      </ng-container>
+      <ng-container *ngIf="column.columnDef!=='settings'">
+        <mat-header-cell *matHeaderCellDef mat-sort-header (click)="sortOnChange(column.columnDef)"> {{ column.header }} </mat-header-cell>
+      </ng-container>
+      <ng-container *ngIf="setting.settingColumn && column.type==='settings' ">
+        <mat-cell *matCellDef="let row">
+          <a *ngIf="column.delete" [routerLink]="" (click)="onDeleteRow(row.id)">
+            <mat-icon style="font-weight: bold;font-size:30px;-webkit-text-fill-color:#f93e3e">delete_forever</mat-icon>
+          </a>
+          <a *ngIf="column.edit" [routerLink]="" (click)="onEditRow(row)">
+            <mat-icon style="font-weight: bold;font-size:30px;-webkit-text-fill-color:#fca130">edit</mat-icon>
+          </a>
+          <a *ngIf="column.save" [routerLink]="" (click)="onDeleteRow()">
+            <mat-icon style="font-weight: bold;font-size:30px;-webkit-text-fill-color:#61affe">save</mat-icon>
+          </a>
+          <a *ngIf="column.email" [routerLink]="" (click)="onDeleteRow()">
+            <mat-icon style="font-weight: bold;font-size:30px;-webkit-text-fill-color:#49cc90">email</mat-icon>
+          </a>
+          <a *ngIf="column.responsible" [routerLink]="" (click)="onDisplayResponsible(row)">
+            <mat-icon style="font-weight: bold;font-size:30px;-webkit-text-fill-color:#89bf04">gavel</mat-icon>
+          </a>
+          <a *ngIf="column.info" [routerLink]="" (click)="onInfo(row)">
+            <mat-icon style="font-weight: bold;font-size:30px;-webkit-text-fill-color:#61affe">info_outline</mat-icon>
+          </a>
+          <a *ngIf="column.external" [routerLink]="" (click)="onExternalLink(row)">
+            <mat-icon style="font-weight: bold;font-size:30px;-webkit-text-fill-color:#61affe">open_in_new</mat-icon>
+          </a>
+          <a *ngIf="row.isSelected" [routerLink]="">
+            <mat-icon style="cursor: default; font-weight: bold;font-size:30px;-webkit-text-fill-color:black">visibility</mat-icon>
+          </a>
+          <a *ngIf="row.isLocked" [routerLink]="">
+            <mat-icon style="cursor: default; font-weight: bold;font-size:30px;-webkit-text-fill-color:#ff4081">vpn_key</mat-icon>
+          </a>
+          <!-- <a [routerLink]="">
+              <img src="../../assets/images/{{column.cell(row)}}" style="cursor: default; font-weight: bold;font-size:30px;">
+          </a> -->
+        </mat-cell>
+      </ng-container>
+      <ng-container *ngIf="column.type==='boolean'">
+        <mat-cell *matCellDef="let row">
+          <mat-icon *ngIf="column.cell(row)==='false'" style="font-weight: bold;font-size:30px;-webkit-text-fill-color:#f93e3e">remove</mat-icon>
+          <mat-icon *ngIf="column.cell(row)==='true'" style="font-weight: bold;font-size:30px;-webkit-text-fill-color:#49cc90">check </mat-icon>
+        </mat-cell>
+      </ng-container>
+      <ng-container *ngIf="column.type==='icon'">
+          <mat-cell *matCellDef="let row">
+            <img src="{{ column.cell(row) }}" height="50" width="50">
+          </mat-cell>
+        </ng-container>
+      <ng-container *ngIf="column.type==='text'">
+        <mat-cell *matCellDef="let row"> {{ column.cell(row) }} </mat-cell>
+      </ng-container>
+      <ng-container *ngIf="column.type==='date'">
+        <mat-cell *matCellDef="let row"> {{ column.cell(row).slice(0,10) }} </mat-cell>
+      </ng-container>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+
+  </mat-table>
+  <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = pageOnChange($event)">
+  </mat-paginator>
+</div>

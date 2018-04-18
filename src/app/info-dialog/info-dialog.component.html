@@ -1,0 +1,22 @@
+<p>{{ title }}</p>
+<p>{{ message }}</p>
+<mat-nav-list>
+  <mat-nav-list>
+    <mat-icon class="pull-left">remove</mat-icon>
+    <input class="pull-left" value="$Bottin des requérants$" mat-list-item #tag1>
+  </mat-nav-list>
+  <mat-icon (click)="copySuccess('$Bottin des requérants$')" matTooltip="Copie" [ngxClipboard]="tag1" class="icon pull-right">content_copy</mat-icon>
+  <br>
+  <mat-nav-list>
+    <mat-icon class="pull-left">remove</mat-icon>
+    <input class="pull-left" value="$Bottin$" mat-list-item #tag2>
+  </mat-nav-list>
+  <mat-icon (click)="copySuccess('$Bottin$')" matTooltip="Copie" [ngxClipboard]="tag2" class="icon pull-right">content_copy</mat-icon>
+  <br>
+  <mat-nav-list>
+    <mat-icon class="pull-left">remove</mat-icon>
+    <input class="pull-left" value="$Bottin des requérants hjkhjhjk$" mat-list-item #tag3>
+  </mat-nav-list>
+  <mat-icon (click)="copySuccess('$Bottin des requérants hjkhjhjk$')" matTooltip="Copie" [ngxClipboard]="tag3" class="icon pull-right">content_copy</mat-icon>
+  <br>
+</mat-nav-list>

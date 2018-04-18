@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+$green: #49cc90;
+$blue: #61affe;
+$red: #f93e3e;
+$yellow: #fca130;
+$white: #ffff;
+$gray: #cccccc5e;
+$light-gray: #cccccc0f;
+
+//$theme-primary:    #fed136;
+$theme-primary:    #1996d7;
+$theme-danger:     #e74c3c;
+
+$gray-base:			#000 !default;
+$gray-darker:		lighten($gray-base, 13.5%) !default; // #222
+$gray-dark:			lighten($gray-base, 20%) !default;   // #333
+$gray:				lighten($gray-base, 33.5%) !default; // #555
+$gray-light:		lighten($gray-base, 46.7%) !default; // #777
+$gray-lighter:		lighten($gray-base, 93.5%) !default; // #eee
+
+::ng-deep snack-bar-container.success{
+    background-color: $green;
+    color: $white;
+  }
+  
+::ng-deep snack-bar-container.error{
+background-color: $red;
+color: $white;
+}

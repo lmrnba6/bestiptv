@@ -1,0 +1,10 @@
+<div class="col-md-10 col-md-offset-1">
+  <h2>Channel List</h2>
+  <mat-divider></mat-divider>
+  <mat-card>
+    <app-loader *ngIf="block" [color]="color" [mode]="mode" [value]="value" [diameter]="48">
+    </app-loader>
+    <app-abstract-table (sortChange)="sortOnChange($event)" (pageChange)="onPageChange($event)" (filter)="filter($event)" [setting]="setting"
+      [data]="data"></app-abstract-table>
+  </mat-card>
+</div>
